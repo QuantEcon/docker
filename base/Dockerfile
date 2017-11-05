@@ -63,3 +63,6 @@ RUN julia -e 'Pkg.add("PlotlyJS"); using PlotlyJS' && \
     julia -e 'Pkg.add("Parameters"); using Parameters' && \
     julia -e 'Pkg.add("BenchmarkTools"); using BenchmarkTools' && \
     julia -e 'Pkg.add("JLD"); using JLD'
+
+RUN conda install --yes quantecon joblib line_profiler && \
+    pip install linearmodels
