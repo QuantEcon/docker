@@ -68,8 +68,6 @@ RUN conda install --yes quantecon joblib line_profiler && \
     pip install linearmodels
 
 # install some jupyterlab extensions
-RUN jupyter labextension install @jupyterlab/google-drive @jupyterlab/github @jupyterlab/plotly-extension @jupyterlab/json-extension @jupyterlab/geojson-extension @jupyterlab/xkcd-extension
-
-COPY drive.json /home/jovyan/.jupyter/lab/user-settings/@jupyterlab/google-drive/drive.json
+RUN jupyter labextension install @jupyterlab/github @jupyterlab/plotly-extension @jupyterlab/json-extension @jupyterlab/geojson-extension @jupyterlab/xkcd-extension
 
 COPY nbconfig.json /home/jovyan/.jupyter/nbconfig/notebook.json
