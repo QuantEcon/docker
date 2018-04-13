@@ -16,7 +16,7 @@ USER root
 
 # install julia
 RUN cd /tmp && \
-    wget --quiet -O julia_binary.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.1-linux-x86_64.tar.gz && \
+    wget --quiet -O julia_binary.tar.gz https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.2-linux-x86_64.tar.gz && \
     rm -rf /opt/julia/src && \
     mkdir -p /opt/julia/src && \
     tar -C /opt/julia/src -zxf julia_binary.tar.gz --strip-components=1 && \
@@ -57,17 +57,25 @@ RUN julia -e 'Pkg.add("PlotlyJS"); using PlotlyJS' && \
     julia -e 'Pkg.add("MINPACK"); using MINPACK' && \
     julia -e 'Pkg.add("NLsolve"); using NLsolve' && \
     julia -e 'Pkg.add("Optim"); using Optim' && \
-    julia -e 'ENV["PYTHON"]="$(ENV["CONDA_DIR"])/bin/python"; Pkg.add("PyPlot"); using PyPlot' && \
+    julia -e 'Pkg.add("GR"); using GR' && \
     julia -e 'Pkg.add("Plots"); using Plots' && \
     julia -e 'Pkg.add("Memento"); using Memento' && \
     julia -e 'Pkg.add("Parameters"); using Parameters' && \
     julia -e 'Pkg.add("BenchmarkTools"); using BenchmarkTools' && \
     julia -e 'Pkg.add("JLD"); using JLD'
 
+RUN julia -e 'Pkg.add("YAML"); using YAML' && \
+    julia -e 'Pkg.add("Distances"); using Distances' && \
+    julia -e 'Pkg.add("Plotly"); Pkg.checkout("Plotly"); Pkg.checkout("Plotly", "sl/api_v2"); using Plotly' && \
+    julia -e 'Pkg.add("Colors"); using Colors' && \
+    julia -e 'Pkg.add("Dolang"); using Dolang'
+
+# RUN julia -e 'ENV["PYTHON"]="$(ENV["CONDA_DIR"])/bin/python"; Pkg.add("PyPlot"); using PyPlot'
+
 RUN conda install --yes quantecon joblib line_profiler && \
     pip install linearmodels
 
 # install some jupyterlab extensions
-RUN jupyter labextension install @jupyterlab/github @jupyterlab/plotly-extension @jupyterlab/json-extension @jupyterlab/geojson-extension @jupyterlab/xkcd-extension
+RUN jupyter labextension install @jupyterlab/github @jupyterlab/plotly-extension @jupyterlab/json-extension @jupyterlab/geojson-extension
 
 COPY nbconfig.json /home/jovyan/.jupyter/nbconfig/notebook.json
