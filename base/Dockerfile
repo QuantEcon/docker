@@ -55,8 +55,6 @@ RUN julia -e "using Pkg; pkg\"add Expectations Compat IJulia Interpolations Revi
 RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\", tag = \"v0.3.1\")"
 # Master QELP 
 RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\")"
-# Pkg3 garbage collection 
-RUN julia -e "using Pkg; pkg\"gc\""
 
 # Mount the user depot locally. 
 VOLUME /home/jovyan/.julia/
