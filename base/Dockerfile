@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -yq --no-install-recommends \
 # Julia setup 
 # JULIA_PKGDIR will soon be deprecated; keep an eye on the jupyter upstream to see the new standard
 ENV JULIA_PKGDIR=/opt/julia
-ENV JULIA_VERSION=1.0.1
+ENV JULIA_VERSION=1.0.2
 
 # Install Julia 
 RUN mkdir /opt/julia-${JULIA_VERSION} && \
@@ -50,9 +50,9 @@ USER $NB_UID
 
 # Install Julia packages 
 # Base packages
-RUN julia -e "using Pkg; pkg\"add Expectations Compat IJulia Interpolations Revise QuantEcon InstantiateFromURL Plots GR Parameters Distributions\"; pkg\"build\"; pkg\"precompile\"" 
-# v0.3.1 QELP
-RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\", tag = \"v0.3.1\")"
+RUN julia -e "using Pkg; pkg\"add Expectations Compat IJulia Interpolations Revise REPL QuantEcon InstantiateFromURL Plots GR Parameters Distributions\"; pkg\"build\"; pkg\"precompile\"" 
+# v0.9.0 QELP
+RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\", tag = \"v0.9.0\")"
 # Master QELP 
 RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\")"
 
