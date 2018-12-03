@@ -52,7 +52,7 @@ USER $NB_UID
 # Base packages
 RUN julia -e "using Pkg; pkg\"add Expectations Compat IJulia Interpolations Revise REPL QuantEcon InstantiateFromURL Plots GR Parameters Distributions\"; pkg\"build\"; pkg\"precompile\"" 
 # v0.9.0 QELP
-RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\", tag = \"v0.9.0\")"
+RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\", tag = \"v0.9.4\")"
 # Master QELP 
 RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLecturePackages\")"
 
