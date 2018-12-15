@@ -82,7 +82,7 @@ USER $NB_UID
 RUN julia -e "using Pkg; pkg\"add Expectations DifferentialEquations Compat IJulia Interpolations Revise REPL QuantEcon InstantiateFromURL Plots GR Parameters Distributions\"; pkg\"build\"; pkg\"precompile\"" && \
     pip install xlrd
 # QELAP
-RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLectureAllPackages\", tag = \"${PACKAGEVERSION}")" && \
+RUN julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLectureAllPackages\", tag = \"${PACKAGEVERSION}\")" && \
     julia -e "using InstantiateFromURL; activate_github(\"QuantEcon/QuantEconLectureAllPackages\")"
 
 # Mount the user depot locally.
