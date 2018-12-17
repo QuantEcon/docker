@@ -1,5 +1,4 @@
-FROM julia:1.0.2-stretch
-
+FROM julia:1.0.2-stretch 
 ARG PACKAGEVERSION=v0.9.5
 
 # Linux dependencies
