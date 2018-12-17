@@ -1,4 +1,4 @@
-FROM julia:1.0.2-stretch
+FROM quantecon/julia
 
 ARG PACKAGEVERSION=v0.9.5
 
