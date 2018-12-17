@@ -1,5 +1,5 @@
 # Setup 
-FROM jupyter/datascience-notebook as minimal 
+FROM jupyter/datascience-notebook  
 LABEL maintainer="QuantEcon Project <admin@quantecon.org>"
 ARG PACKAGEVERSION=v0.9.5
 
