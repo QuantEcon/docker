@@ -5,8 +5,9 @@ ARG PACKAGEVERSION=v0.9.5
 # Sundials, NLopt, MPI, Nemo, Cairo
 RUN apt-get update && apt-get install -y --no-install-recommends \
     g++ \
+    gfortran \ 
     python3-dev \
-    python3-pip \ 
+    python3-pip \
     software-properties-common \
     openmpi-bin \
     libopenmpi-dev \
