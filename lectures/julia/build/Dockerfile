@@ -17,3 +17,7 @@ RUN sudo ln -fs ${HOME}/utils/julia-*/bin/julia /usr/local/bin/julia
 
 # Install Jupinx
 RUN /home/quantecon/utils/conda/bin/pip install sphinxcontrib-jupyter sphinxcontrib.bibtex 
+
+# Add Julia Packages
+RUN julia -e "using Pkg; pkg\"add InstantiateFromURL IJulia\""
+RUN julia -e "using InstantiateFromURL; github_project(\"QuantEcon/quantecon-notebooks-julia\"); packages_to_default_environment()"
