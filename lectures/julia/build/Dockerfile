@@ -1,4 +1,4 @@
-FROM quantecon/lectures-base
+FROM quantecon/lectures-base:latest
 MAINTAINER me@arnavsood.com 
 USER quantecon 
 
