@@ -16,4 +16,4 @@ RUN cd ${HOME}/utils && mkdir julia-${JULIA_VERSION} && cd julia-${JULIA_VERSION
 RUN sudo ln -fs ${HOME}/utils/julia-*/bin/julia /usr/local/bin/julia
 
 # Install Jupinx
-RUN pip install sphinxcontrib-jupyter sphinxcontrib.bibtex 
+RUN /home/quantecon/utils/conda/bin/pip install sphinxcontrib-jupyter sphinxcontrib.bibtex 

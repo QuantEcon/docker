@@ -26,5 +26,4 @@ RUN mkdir -p ~/utils/conda && mkdir -p /tmp && cd /tmp && \
     echo ". ~/utils/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc 
 
-ENTRYPOINT [ "/usr/bin/quantecon", "--" ]
-CMD [ "/bin/bash" ]
+SHELL ["/bin/bash", "-c"]
