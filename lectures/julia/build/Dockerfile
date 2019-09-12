@@ -20,4 +20,4 @@ RUN /home/quantecon/utils/conda/bin/pip install sphinxcontrib-jupyter sphinxcont
 
 # Add Julia Packages
 RUN julia -e "using Pkg; pkg\"add InstantiateFromURL IJulia\""
-RUN julia -e "using InstantiateFromURL; github_project(\"QuantEcon/quantecon-notebooks-julia\"); packages_to_default_environment()"
+RUN cd ${HOME}/utils && julia -e "using InstantiateFromURL; github_project(\"QuantEcon/quantecon-notebooks-julia\"); packages_to_default_environment()"
