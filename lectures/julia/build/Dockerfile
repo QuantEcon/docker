@@ -13,5 +13,6 @@ RUN cd ${HOME}/utils && mkdir julia-${JULIA_VERSION} && cd julia-${JULIA_VERSION
     echo "926ced5dec5d726ed0d2919e849ff084a320882fb67ab048385849f9483afc47 *julia-${JULIA_VERSION}-linux-x86_64.tar.gz" | sha256sum -c - && \
     tar xzf julia-${JULIA_VERSION}-linux-x86_64.tar.gz --strip-components=1 && \
     rm *.tar.gz
-
 RUN sudo ln -fs ${HOME}/utils/julia-*/bin/julia /usr/local/bin/julia
+
+RUN pip install sphinxcontrib-jupyter sphinxcontrib.bibtex 
